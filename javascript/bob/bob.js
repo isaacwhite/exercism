@@ -5,14 +5,13 @@ var Bob = function() {
 Bob.prototype.hey = function (input) {
   function testInput(string) {
     function testEmpty(string) {
-      return ((string.length === 0) ||
-         (string.replace(/ /g,"").length === 0));
+      return (string.replace(/ /g,"").length === 0);
     }
-    function testNumbers(string) {
-      return ((string === string.toUpperCase()) &&
-         (string === string.toLowerCase()) &&
-         (!testEmpty(string)));
-    }
+    // function testNumbers(string) {
+    //   return ((string === string.toUpperCase()) &&
+    //      (string === string.toLowerCase()) &&
+    //      (!testEmpty(string)));
+    // }
     function testShout(string) {
       return ((string === string.toUpperCase()) &&
          (string !== string.toLowerCase()));
@@ -22,7 +21,7 @@ Bob.prototype.hey = function (input) {
          (string.substr(string.length - 1) === "?"));
     }
     return {
-      numbers: testNumbers(string),
+      // numbers: testNumbers(string),
       empty: testEmpty(string),
       shout: testShout(string),
       question: testQuestion(string)
