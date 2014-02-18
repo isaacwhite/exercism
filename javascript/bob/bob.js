@@ -1,27 +1,20 @@
-var Bob = function() {
-"use strict";
+var Bob = function () {
 };
-
 Bob.prototype.hey = function (input) {
+  "use strict";
   function testInput(string) {
     function testEmpty(string) {
-      return (string.replace(/ /g,"").length === 0);
+      return string.trim() === "";
     }
-    // function testNumbers(string) {
-    //   return ((string === string.toUpperCase()) &&
-    //      (string === string.toLowerCase()) &&
-    //      (!testEmpty(string)));
-    // }
     function testShout(string) {
-      return ((string === string.toUpperCase()) &&
-         (string !== string.toLowerCase()));
+      return (string === string.toUpperCase()) &&
+         (string !== string.toLowerCase());
     }
     function testQuestion(string) {
-      return ((!testEmpty(string)) &&
-         (string.substr(string.length - 1) === "?"));
+      return (!testEmpty(string)) &&
+         (string.slice(-1) === "?");
     }
     return {
-      // numbers: testNumbers(string),
       empty: testEmpty(string),
       shout: testShout(string),
       question: testQuestion(string)
