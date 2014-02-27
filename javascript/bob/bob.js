@@ -1,35 +1,14 @@
-var Bob = function () {
-};
+var Bob = function () {}; //empty constructor
 Bob.prototype.hey = function (input) {
   "use strict";
-  function testInput(string) {
-    function testEmpty(string) {
-      return string.trim() === "";
-    }
-    function testShout(string) {
-      return (string === string.toUpperCase()) &&
-         (string !== string.toLowerCase());
-    }
-    function testQuestion(string) {
-      return (!testEmpty(string)) &&
-         (string.slice(-1) === "?");
-    }
-    return {
-      empty: testEmpty(string),
-      shout: testShout(string),
-      question: testQuestion(string)
-    };
-  }
-  var testResult = testInput(input);
-
-  if(testResult.empty) {
-    return "Fine. Be that way!";
-  } else if(testResult.shout) {
-    return "Woah, chill out!";
-  } else if(testResult.question) {
-    return "Sure.";
-  } else {
-    return "Whatever.";
-  }
+  var test = {
+    empty:    input.trim() === "",
+    shout:    input === input.toUpperCase() &&
+              input !== input.toLowerCase(),
+    question: input.slice(-1) === "?"
+  };
+  if(test.empty) return "Fine. Be that way!";
+  if(test.shout) return "Woah, chill out!";
+  if(test.question) return "Sure."; else return "Whatever.";
 };
 module.exports = Bob;
