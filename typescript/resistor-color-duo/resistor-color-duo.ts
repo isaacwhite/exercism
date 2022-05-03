@@ -1,4 +1,4 @@
-const bandColors = [
+enum bandColors {
   "black",
   "brown",
   "red",
@@ -9,7 +9,9 @@ const bandColors = [
   "violet",
   "grey",
   "white",
-];
+}
+
+type bandColorsMember = keyof typeof bandColors;
 
 export function decodedValue(colors: string[]): number {
   const [first, second] = colors;
@@ -18,8 +20,9 @@ export function decodedValue(colors: string[]): number {
 
 function decodeBand(bandColor: string): number {
   const lowercase = bandColor.toLowerCase();
-  const position = bandColors.indexOf(lowercase)
-  if (position < 0)  throw Error("Received unexpected band color!");
-
-  return position
+  if (!(lowercase in bandColors)) {
+    throw Error("Received unexpected band color!");
+  }
+  
+  return bandColors[lowercase as bandColorsMember];
 }
